@@ -9,7 +9,8 @@ export interface IUser extends Document {
 const UserSchema: Schema = new Schema(
   {
     email: { type: String, required: true, lowercase: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    selectedSlots: [{ type: Schema.Types.ObjectId, ref: 'CalendarSlot' }]
   },
   {
     timestamps: true

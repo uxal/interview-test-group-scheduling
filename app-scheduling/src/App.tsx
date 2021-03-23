@@ -8,15 +8,18 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
-import './App.css';
 
 import { selectPath, redirectToPath } from './stores/redirectSlice';
 import { fetchGroups } from './stores/groupsSlice';
+import { getUserInfo } from './stores/userSlice';
 
 import Register from './Views/Register/Register';
 import SignIn from './Views/SignIn/SignIn';
 import Calendar from './Views/Calendar/Calendar';
 import Groups from './Views/Groups/Groups';
+import Header from './Components/Header/Header';
+
+import { AppWrapper } from './common-styles/CommonStyles';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,32 +28,36 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('app-scheduling-token');
     if (token) {
+      dispatch(getUserInfo());
       dispatch(redirectToPath('/'));
       dispatch(fetchGroups());
       return;
     }
-    dispatch(redirectToPath('/register'));
+    dispatch(redirectToPath('/signin'));
   }, []);
 
   return (
     <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
-          <Route path="/group/:groupId">
-            <Calendar />
-          </Route>
-          <Route path="/">
-            <Groups />
-          </Route>
-        </Switch>
-        <Redirect to={path} />
-      </Router>
+      <Header />
+      <AppWrapper>
+        <Router>
+          <Switch>
+            <Route path="/register">
+              <Register />
+            </Route>
+            <Route path="/signin">
+              <SignIn />
+            </Route>
+            <Route path="/group/:groupId">
+              <Calendar />
+            </Route>
+            <Route path="/">
+              <Groups />
+            </Route>
+          </Switch>
+          <Redirect to={path} />
+        </Router>
+      </AppWrapper>
 
       {/* <header className="App-header">
        

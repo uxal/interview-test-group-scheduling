@@ -10,7 +10,7 @@ import {
 import { Alert, AlertTitle } from '@material-ui/lab';
 import { Wrapper } from '../../common-styles/CommonStyles';
 import { AuthenticationCard, Title, SubTitle } from './AuthenticationStyles';
-import { register } from '../../stores/userSlice';
+import { register, signin } from '../../stores/userSlice';
 
 const Authentication = () => {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ const Authentication = () => {
     setLoading(true);
     let errorText = null;
     if (location.pathname.includes('signin')) {
-      errorText = await dispatch(register(email, password));
+      errorText = await dispatch(signin(email, password));
     } else {
       errorText = await dispatch(register(email, password));
     }
@@ -55,7 +55,7 @@ const Authentication = () => {
     <Wrapper justify="center">
       <AuthenticationCard>
         <Wrapper align="flex-start" inner column noPadding>
-          <Title>Welcome to World issues</Title>
+          <Title>Welcome to the scheduling example</Title>
           {isSignIn ? (
             <SubTitle>Please sign in</SubTitle>
           ) : (

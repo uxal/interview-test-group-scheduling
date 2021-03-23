@@ -65,3 +65,12 @@ export const SectionTitle = styled.div`
   padding-bottom: 30px;
   color: ${(props) => props.theme.text.secondary};
 `;
+
+export const AppWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-top: 120px;
+  width: 100%;
+  flex: 1;
+  height: 100%;
+`;
