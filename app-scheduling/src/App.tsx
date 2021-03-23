@@ -19,7 +19,8 @@ import Calendar from './Views/Calendar/Calendar';
 import Groups from './Views/Groups/Groups';
 import Header from './Components/Header/Header';
 
-import { AppWrapper } from './common-styles/CommonStyles';
+import { AppWrapper, Wrapper } from './common-styles/CommonStyles';
+import GroupSearch from './Components/GroupSearch/GroupSearch';
 
 function App() {
   const dispatch = useDispatch();
@@ -57,55 +58,11 @@ function App() {
           </Switch>
           <Redirect to={path} />
         </Router>
-      </AppWrapper>
 
-      {/* <header className="App-header">
-       
-        <hr/>
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header> */}
+        <Wrapper>
+          <GroupSearch />
+        </Wrapper>
+      </AppWrapper>
     </div>
   );
 }

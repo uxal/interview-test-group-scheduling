@@ -3,6 +3,7 @@ import counterReducer from '../features/counter/counterSlice';
 import userReducer from './userSlice';
 import redirectReducer from './redirectSlice';
 import groupsReducer from './groupsSlice';
+import autocompleteReducer from './autocompleteSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     user: userReducer,
     redirect: redirectReducer,
     groups: groupsReducer,
+    autocomplete: autocompleteReducer,
   },
 });
 
